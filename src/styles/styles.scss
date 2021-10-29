@@ -1,0 +1,28 @@
+/* You can add global styles to this file, and also import other style files */
+@import './theme';
+
+@import url('https://fonts.googleapis.com/icon?family=Material+Icons');
+@import url('https://fonts.googleapis.com/css?family=Titillium+Web:600');
+@import url('https://fonts.googleapis.com/css?family=Abril+Fatface');
+
+@include mat-core();
+@include angular-material-theme($app-theme);
+
+//global style
+html{
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-font-smoothing: antialiased;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    height: 100%;
+}
+body{
+    color: #212121;
+    background-color: #f3f3f3;
+    font-family: mat-font-family($app-typography);
+    line-height: mat-line-height($app-typography,body-1);
+    font-size: mat-font-size($app-typography,body-1);
+    height: 100%;
+    margin: 0;
+}
