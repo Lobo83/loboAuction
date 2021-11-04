@@ -9,6 +9,8 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { HttpClientModule } from '@angular/common/http';
 import { ProductService } from './shared/services/product.service';
+import { RouterModule } from '@angular/router';
+import { routes } from './app-routing.module';
 
 @NgModule({
   declarations: [
@@ -21,7 +23,8 @@ import { ProductService } from './shared/services/product.service';
     MatIconModule,
     MatToolbarModule,
     FlexLayoutModule,
-    HttpClientModule
+    HttpClientModule,
+    RouterModule.forRoot(routes)
   ],
   providers: [ProductService],
   bootstrap: [AppComponent]

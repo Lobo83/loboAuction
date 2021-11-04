@@ -20,9 +20,9 @@ export class ProductService {
   constructor(private http:HttpClient) { }
 
   getAll(): Observable<Product[]>{
-    return this.http.get<Product[]>('/data/products.json');
+    return this.http.get<Product[]>('assets/data/products.json');
   }
   getById(id:number): Observable<Product>{
-    return this.http.get<Product[]>('/data/products.json').pipe(map(products=><Product>products.find(p=>p.id===id)));
+    return this.http.get<Product[]>('assets/data/products.json').pipe(map(products=><Product>products.find(p=>p.id===id)));
   }
 }
