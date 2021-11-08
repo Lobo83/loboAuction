@@ -11,10 +11,12 @@ import { HttpClientModule } from '@angular/common/http';
 import { ProductService } from './shared/services/product.service';
 import { RouterModule } from '@angular/router';
 import { routes } from './app-routing.module';
+import { ProjectionComponent } from './projection/projection.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    ProjectionComponent
   ],
   imports: [
     BrowserModule,
