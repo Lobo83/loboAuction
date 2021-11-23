@@ -1,0 +1,22 @@
+<div class="info__title" fxLayout="row" style="background: url(http://placekitten.com/200/300) no-repeat 0 0;">
+    More Items to consider:
+ 
+</div>
+<mat-grid-list [cols]="columns$ | async" gutterSize="16px">
+    <mat-grid-tile class="tile" *ngFor="let product of products">
+        <a class="tile__content" fxLayout="column" fxLayoutAlign="center center" [routerLink]="['/products',product.id]">
+            <div class="tile__thumbnail" [ngStyle]="{'background-image':'url('+product.imageUrl+')'}">6</div>
+            
+            
+        </a>
+    </mat-grid-tile>
+</mat-grid-list>
+<!--<mat-grid-list [cols]="columns$ | async" gutterSize="16px">
+    <mat-grid-tile class="tile" *ngFor="let product of products">
+        <a class="tile__content" fxLayout="column" fxLayoutAlign="center center"
+        [routerLink]="['/products',product.id]">
+            <div class="tile__thumbnail" [ngStyle]="{'background-image':'url('+product.imageUrl+')'}"  ></div>
+        </a>
+    </mat-grid-tile>
+    
+</mat-grid-list>-->

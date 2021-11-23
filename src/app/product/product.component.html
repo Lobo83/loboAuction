@@ -1,0 +1,14 @@
+<div class="wrapper" fxLayout="column" fxLayout.gt-md="row-reverse">
+    <app-product-detail fxFlex="auto" fxFlex.gt-md="65%" *ngIf="product$ | async as product" [product]="product">
+        <!-- suscribirse al observable product$ definido en el ts y almacenar el resultado en la variable template product
+    de esta manera, se puede referenciar el valor emitido en distintos puntos de la template
+    la alternativa 
+    *ngIf="product$ | async  
+    [product]="product$ | async"
+    esto crea dos suscripciones en vez de una, lo cual no es lo mas eficiente.
+    -->
+    </app-product-detail>
+    <app-product-suggestion fxFlex="auto" fxFlex.gt-md="35%" *ngIf="suggestedProducts$ | async as products"
+        [products]="products">
+    </app-product-suggestion>
+</div>

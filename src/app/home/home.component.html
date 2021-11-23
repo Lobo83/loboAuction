@@ -2,7 +2,7 @@
     <mat-grid-list [cols]="columns$ | async" gutterSize="16">
         <mat-grid-tile class="tile" *ngFor="let product of products$ | async">
             <a class="tile__content" fxLayout="column" fxLayoutAlign="center center"
-                href="#">
+            [routerLink]="['/products',product.id]">
                 <span class="tile__price-tag" ngClass.xs="tile__price-tag--xs">
                     {{product.price | currency:'USD':'symbol':'.0'}}
                 </span>
