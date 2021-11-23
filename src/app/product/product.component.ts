@@ -25,9 +25,18 @@ export class ProductComponent {
       }
       )
     );
-    this.suggestedProducts$=this.productService.getAll().pipe(map(products=>{
-      return products.filter(product=>product.id !== prodId);
-    }));
+    this.suggestedProducts$=  this.route.paramMap.pipe(map(params => parseInt(params.get('productId') || '', 10)),
+    filter(productId => !!productId),
+    switchMap(productId => {
+
+      prodId = productId;
+      return this.productService.getAll().pipe(map(products=>{
+        return products.filter(product=>product.id !== prodId);
+      }));
+    }
+    )
+  );
+    
      /*this.productService.getAll().subscribe(products => {
       
       for (let product of products){
