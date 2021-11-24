@@ -13,25 +13,29 @@ export class ProductComponent {
 
   product$: Observable<Product>;
   suggestedProducts$: Observable<Product[]> ;
+  allProducts$:Observable<Product[]> = this.productService.getAll();
 
   constructor(private route: ActivatedRoute, private productService: ProductService) {
-    let prodId = 0;
+    
     this.product$ = this.route.paramMap.pipe(map(params => parseInt(params.get('productId') || '', 10)),
       filter(productId => !!productId),
       switchMap(productId => {
-
-        prodId = productId;
         return this.productService.getById(productId);
       }
       )
     );
+    
     this.suggestedProducts$=  this.route.paramMap.pipe(map(params => parseInt(params.get('productId') || '', 10)),
-    filter(productId => !!productId),
+    filter(productId => !!productId), /* !! significa que si un valor es NaN, string vacío, 0, nulo o indefinido devuelve falso, true en otro caso
+    !!0--> false
+    !!null--> false
+    !!NaN--> false
+    !!""-->false
+    !!undefined-->false
+    */
     switchMap(productId => {
-
-      prodId = productId;
-      return this.productService.getAll().pipe(map(products=>{
-        return products.filter(product=>product.id !== prodId);
+      return this.allProducts$.pipe(map(products=>{
+        return products.filter(product=>product.id !== productId);
       }));
     }
     )
